@@ -1,17 +1,13 @@
 package me.hydos.arms.compiler.instruction;
 
 import me.hydos.arms.compiler.CpuState;
+import me.hydos.arms.compiler.RegistryUtils;
 
 public class MoveInstruction implements Instruction {
 
 	@Override
 	public void compile(String arg1, String arg2, CpuState state) {
-		//TODO: use regex to check if its a register or byte
-		try {
-			byte value = Byte.parseByte(arg1.replace("0x", ""));
-			CpuState.class.getDeclaredField(arg2).setByte(state, value);
-		} catch (IllegalAccessException | NoSuchFieldException e) {
-			e.printStackTrace();
-		}
+		byte value = RegistryUtils.getValue(arg1, state);
+		RegistryUtils.setRegister(arg2.toUpperCase(), value, state);
 	}
 }
