@@ -11,6 +11,7 @@ public class Processors {
 
 	static {
 		PROCESSORS.add(new CommentPreProcessor());
+		PROCESSORS.add(new CommaPreProcessor());
 		PROCESSORS.add(new InstructionPreProcessor());
 	}
 }
