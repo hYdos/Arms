@@ -9,6 +9,8 @@ import net.minecraft.util.math.BlockPos;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
+
 public class Arms implements ModInitializer {
 
 	public static final Logger LOGGER = LogManager.getLogger("Arms");
@@ -20,13 +22,19 @@ public class Arms implements ModInitializer {
 
 		ServerPlayNetworking.registerGlobalReceiver(Networking.SEND_FILE, (server, player, serverPlayNetworkHandler, buf, sender) -> {
 			BlockPos pos = buf.readBlockPos();
-			String line = buf.readString(32767);
+			String chunk = buf.readString(32767);
 			server.execute(() -> {
 				ArmChipBlockEntity armChipBlockEntity = ((ArmChipBlockEntity) player.getServerWorld().getBlockEntity(pos));
-				if (armChipBlockEntity != null) { // Well... fuck
-					armChipBlockEntity.asm = armChipBlockEntity.asm + line;
+				if (armChipBlockEntity != null) {
+					Arrays.stream(chunk.split("\n")).forEach(line -> armChipBlockEntity.state.asm = safeAppendToArray(armChipBlockEntity.state.asm, line));
 				}
 			});
 		});
+	}
+
+	private String[] safeAppendToArray(String[] asm, String line) {
+		String[] asm2 = Arrays.copyOf(asm, asm.length + 1);
+		asm2[asm2.length - 1] = line;
+		return asm2;
 	}
 }

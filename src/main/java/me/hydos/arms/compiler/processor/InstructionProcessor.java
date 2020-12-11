@@ -9,7 +9,7 @@ import me.hydos.arms.compiler.instruction.NOPInstruction;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class InstructionPreProcessor implements CodeProcessor {
+public class InstructionProcessor implements CodeProcessor {
 
 	@Override
 	public boolean canProcess(String line) {
