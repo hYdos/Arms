@@ -73,9 +73,17 @@ public class CpuState {
 		state.R13 = registry[13];
 
 		state.PC = tag.getByte("pc");
-		state.asm = (String[]) tag.getList("code", NbtType.STRING).toArray();
+		state.asm = fromTagString(tag.getList("code", NbtType.STRING).toArray(new StringTag[0]));
 
 		return state;
+	}
+
+	private static String[] fromTagString(StringTag[] codes) {
+		String[] stringArray = new String[codes.length];
+		for (int i = 0; i < codes.length; i++) {
+			stringArray[i] = codes[i].asString();
+		}
+		return stringArray;
 	}
 
 	public CompoundTag toTag(CompoundTag tag){

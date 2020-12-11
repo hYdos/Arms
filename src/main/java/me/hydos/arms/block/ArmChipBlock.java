@@ -18,6 +18,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -46,5 +47,14 @@ public class ArmChipBlock extends BlockWithEntity {
 			ServerPlayNetworking.send((ServerPlayerEntity) player, Networking.OPEN_COOL_SCREEN, buf);
 		}
 		return ActionResult.SUCCESS;
+	}
+
+	@Override
+	public int getStrongRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+		ArmChipBlockEntity blockEntity = (ArmChipBlockEntity) world.getBlockEntity(pos);
+		if(blockEntity == null){
+			blockEntity.onRedstonePower();
+		}
+		return super.getStrongRedstonePower(state, world, pos, direction);
 	}
 }

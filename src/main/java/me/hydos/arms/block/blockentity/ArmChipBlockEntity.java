@@ -28,4 +28,7 @@ public class ArmChipBlockEntity extends BlockEntity{
 		super.fromTag(state, tag);
 	}
 
+	public void onRedstonePower() {
+		System.out.println("Epic");
+	}
 }
