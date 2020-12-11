@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "arms:block/arm_chip" }
+  }
+}

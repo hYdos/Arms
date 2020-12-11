@@ -1,29 +1,27 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "arms",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Arms",
+  "description": "An simple armv7 aarch32 mod",
   "authors": [
-    "Me!"
+    "hydos"
   ],
-  "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
-  },
-
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "LGPL",
+  "icon": "assets/arms/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "me.hydos.arms.Arms"
+    ],
+    "client": [
+      "me.hydos.arms.client.ClientArms"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "arms.mixins.json"
   ],
 
   "depends": {
