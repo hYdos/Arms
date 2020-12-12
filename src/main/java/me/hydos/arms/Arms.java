@@ -32,8 +32,8 @@ public class Arms implements ModInitializer {
 		});
 	}
 
-	private String[] safeAppendToArray(String[] asm, String line) {
-		String[] asm2 = Arrays.copyOf(asm, asm.length + 1);
+	public static <T> T[] safeAppendToArray(T[] asm, T line) {
+		T[] asm2 = Arrays.copyOf(asm, asm.length + 1);
 		asm2[asm2.length - 1] = line;
 		return asm2;
 	}

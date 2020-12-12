@@ -1,5 +1,5 @@
 {
-	"credit": "Made with Blockbench",
+	"parent": "block/cube_all",
 	"texture_size": [64, 64],
 	"textures": {
 		"1": "arms:block/armv7"

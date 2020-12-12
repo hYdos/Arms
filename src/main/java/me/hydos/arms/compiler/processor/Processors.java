@@ -10,7 +10,6 @@ public class Processors {
 	public static final List<CodeProcessor> PROCESSORS = new ArrayList<>();
 
 	static {
-		PROCESSORS.add(new CommentPreProcessor());
 		PROCESSORS.add(new CommaPreProcessor());
 		PROCESSORS.add(new InstructionProcessor());
 	}
